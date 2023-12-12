@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+.common-font{
+    font-family: 'Inter';
+}
+
+.cursive-font{
+    font-family: 'Playfair Display';
+}
+
+.opacity-light{
+    opacity: .5;
+}
