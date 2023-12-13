@@ -1,5 +1,4 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
-import { User } from 'src/auth/entities/auth.entity';
 
 @Schema()
 export class Appointment {
@@ -9,7 +8,7 @@ export class Appointment {
     date: string;
 
     @Prop({ required:true })
-    user: User;
+    // user: User;
 
     @Prop({ required:true })
     message: string

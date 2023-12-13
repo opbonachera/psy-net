@@ -1,6 +1,7 @@
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
 import { UpdateAppointmentDto } from './dto/update-appointment.dto';
 export declare class AppointmentsService {
+    constructor();
     create(createAppointmentDto: CreateAppointmentDto): string;
     findAll(): string;
     findOne(id: number): string;

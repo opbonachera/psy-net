@@ -1,0 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.jwtSecret = void 0;
+exports.jwtSecret = {
+    secret: 'dfsjdflkdjkdkdsakd'
+};
+//# sourceMappingURL=constants.js.map

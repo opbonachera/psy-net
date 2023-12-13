@@ -1,10 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Model } from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
 
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
 import { UpdateAppointmentDto } from './dto/update-appointment.dto';
-import { User } from 'src/auth/entities/auth.entity';
 
 @Injectable()
 export class AppointmentsService {
