@@ -10,3 +10,15 @@
 .opacity-light{
     opacity: .5;
 }
+
+.bg-primary-cust{
+    background-color: rgb(242, 235, 255);
+}
+
+a{
+    color: rgb(72, 55, 88);
+}
+
+.valid-field{
+    border: 2px solid rgba(223, 255, 223, 0.503);
+}
