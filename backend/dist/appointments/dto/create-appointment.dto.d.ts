@@ -1,5 +1,5 @@
 export declare class CreateAppointmentDto {
-    date: string;
+    date: Date;
     message: string;
     state: string;
 }

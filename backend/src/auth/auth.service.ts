@@ -44,6 +44,7 @@ export class AuthService {
   }
 
   async create( createUserDto: CreateUserDto ): Promise<User>{
+    
     try {
           const { password, ...userData } = createUserDto;
           const newUser = new this.userModel({
@@ -58,9 +59,11 @@ export class AuthService {
           return user;
         
     }catch(err){
+        
         if(err.code === 11000 ) throw new BadRequestException(`${ createUserDto.username } already exists`);
 
         throw new InternalServerErrorException("Something unexpected happened");
+        
     }
   }
 

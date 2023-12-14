@@ -10,6 +10,8 @@ exports.AppointmentsModule = void 0;
 const common_1 = require("@nestjs/common");
 const appointments_service_1 = require("./appointments.service");
 const appointments_controller_1 = require("./appointments.controller");
+const mongoose_1 = require("@nestjs/mongoose");
+const appointment_entity_1 = require("./entities/appointment.entity");
 let AppointmentsModule = class AppointmentsModule {
 };
 exports.AppointmentsModule = AppointmentsModule;
@@ -17,6 +19,14 @@ exports.AppointmentsModule = AppointmentsModule = __decorate([
     (0, common_1.Module)({
         controllers: [appointments_controller_1.AppointmentsController],
         providers: [appointments_service_1.AppointmentsService],
+        imports: [
+            mongoose_1.MongooseModule.forFeature([
+                {
+                    name: appointment_entity_1.Appointment.name,
+                    schema: appointment_entity_1.AppointmentSchema
+                }
+            ])
+        ]
     })
 ], AppointmentsModule);
 //# sourceMappingURL=appointments.module.js.map

@@ -21,58 +21,28 @@ let AppointmentsController = class AppointmentsController {
     constructor(appointmentsService) {
         this.appointmentsService = appointmentsService;
     }
-    create(createAppointmentDto) {
-        return this.appointmentsService.create(createAppointmentDto);
+    createAppointment(createAppDto) {
+        return this.appointmentsService.create(createAppDto);
     }
-    findAll() {
-        return this.appointmentsService.findAll();
-    }
-    findOne(id) {
-        return this.appointmentsService.findOne(+id);
-    }
-    update(id, updateAppointmentDto) {
-        return this.appointmentsService.update(+id, updateAppointmentDto);
-    }
-    remove(id) {
-        return this.appointmentsService.remove(+id);
+    modifyAppointment(updAppointmentDto) {
+        return this.appointmentsService.update(updAppointmentDto);
     }
 };
 exports.AppointmentsController = AppointmentsController;
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Get)('/create'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_appointment_dto_1.CreateAppointmentDto]),
     __metadata("design:returntype", void 0)
-], AppointmentsController.prototype, "create", null);
+], AppointmentsController.prototype, "createAppointment", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Put)('/update'),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [update_appointment_dto_1.UpdateAppointmentDto]),
     __metadata("design:returntype", void 0)
-], AppointmentsController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], AppointmentsController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_appointment_dto_1.UpdateAppointmentDto]),
-    __metadata("design:returntype", void 0)
-], AppointmentsController.prototype, "update", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], AppointmentsController.prototype, "remove", null);
+], AppointmentsController.prototype, "modifyAppointment", null);
 exports.AppointmentsController = AppointmentsController = __decorate([
     (0, common_1.Controller)('appointments'),
     __metadata("design:paramtypes", [appointments_service_1.AppointmentsService])
