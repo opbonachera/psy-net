@@ -35,4 +35,7 @@ export declare class AppointmentsController {
     modifyAppointment(updAppointmentDto: UpdateAppointmentDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
         _id: string;
     }>>;
+    removeAppointment(id: string): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
+        _id: string;
+    }>>;
 }

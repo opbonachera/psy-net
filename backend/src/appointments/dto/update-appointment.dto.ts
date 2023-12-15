@@ -1,5 +1,7 @@
 import { IsDate, IsNotEmpty, IsString } from "class-validator";
 export class UpdateAppointmentDto {
+    _id:string
+    
     @IsNotEmpty()
     @IsDate()
     date: Date

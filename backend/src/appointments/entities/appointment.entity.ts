@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import { User } from 'src/auth/entities/user.entity';
 
 @Schema()
 export class Appointment {
@@ -11,10 +12,13 @@ export class Appointment {
     // user: User;
 
     @Prop({ required:true })
-    message: string
+    message: string;
 
     @Prop({ required:true })
     state: string; // pending, accepted, declined
+
+    @Prop({ default: false })
+    removed: boolean;
 }
 
 export const AppointmentSchema = SchemaFactory.createForClass( Appointment );

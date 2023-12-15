@@ -36,5 +36,7 @@ export declare class AppointmentsService {
         _id: string;
     }>>;
     findOne(id: number): string;
-    remove(id: number): string;
+    remove(id: string): Promise<import("mongoose").Document<unknown, {}, Appointment> & Appointment & Required<{
+        _id: string;
+    }>>;
 }

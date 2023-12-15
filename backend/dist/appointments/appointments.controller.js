@@ -27,6 +27,9 @@ let AppointmentsController = class AppointmentsController {
     modifyAppointment(updAppointmentDto) {
         return this.appointmentsService.update(updAppointmentDto);
     }
+    removeAppointment(id) {
+        return this.appointmentsService.remove(id);
+    }
 };
 exports.AppointmentsController = AppointmentsController;
 __decorate([
@@ -43,6 +46,13 @@ __decorate([
     __metadata("design:paramtypes", [update_appointment_dto_1.UpdateAppointmentDto]),
     __metadata("design:returntype", void 0)
 ], AppointmentsController.prototype, "modifyAppointment", null);
+__decorate([
+    (0, common_1.Post)('/remove'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], AppointmentsController.prototype, "removeAppointment", null);
 exports.AppointmentsController = AppointmentsController = __decorate([
     (0, common_1.Controller)('appointments'),
     __metadata("design:paramtypes", [appointments_service_1.AppointmentsService])

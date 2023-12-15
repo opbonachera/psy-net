@@ -28,6 +28,7 @@ export declare class Appointment {
     date: string;
     message: string;
     state: string;
+    removed: boolean;
 }
 export declare const AppointmentSchema: import("mongoose").Schema<Appointment, import("mongoose").Model<Appointment, any, any, any, import("mongoose").Document<unknown, any, Appointment> & Appointment & Required<{
     _id: string;

@@ -33,7 +33,7 @@ let AppointmentsService = class AppointmentsService {
         }
     }
     async update(updateAppointmentDto) {
-        const { date, state, message } = updateAppointmentDto;
+        const { _id, date, state, message } = updateAppointmentDto;
         try {
             const updatedApp = this.appointmentModel.findOneAndUpdate({ date: date }, { 'message': message,
                 'state': state });
@@ -48,8 +48,8 @@ let AppointmentsService = class AppointmentsService {
     findOne(id) {
         return `This action returns a #${id} appointment`;
     }
-    remove(id) {
-        return `This action removes a #${id} appointment`;
+    async remove(id) {
+        return this.appointmentModel.findOneAndDelete({ _id: id });
     }
 };
 exports.AppointmentsService = AppointmentsService;

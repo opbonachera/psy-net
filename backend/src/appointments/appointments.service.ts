@@ -6,6 +6,7 @@ import { Appointment } from './entities/appointment.entity';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { UpdateAppointmentDto } from './dto/update-appointment.dto';
+
 @Injectable()
 export class AppointmentsService {
   constructor(
@@ -31,7 +32,8 @@ export class AppointmentsService {
   }
 
   async update( updateAppointmentDto: UpdateAppointmentDto ){
-    const { date, state, message } = updateAppointmentDto;
+    const { _id, date, state, message } = updateAppointmentDto;
+    // console.log(_id)
 
     try{
       
@@ -53,7 +55,7 @@ export class AppointmentsService {
   }
 
 
-  remove(id: number) {
-    return `This action removes a #${id} appointment`;
+  async remove(id: string) {
+    return this.appointmentModel.findOneAndDelete({ _id: id });
   }
 }

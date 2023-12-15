@@ -27,6 +27,10 @@ __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Appointment.prototype, "state", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ default: false }),
+    __metadata("design:type", Boolean)
+], Appointment.prototype, "removed", void 0);
 exports.Appointment = Appointment = __decorate([
     (0, mongoose_1.Schema)()
 ], Appointment);

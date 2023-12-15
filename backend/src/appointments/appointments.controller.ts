@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/
 import { AppointmentsService } from './appointments.service';
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
 import { UpdateAppointmentDto } from './dto/update-appointment.dto';
+import { RemoveAppointmentDto } from './dto/remove-appointment.dto';
 
 @Controller('appointments')
 export class AppointmentsController {
@@ -16,5 +17,10 @@ export class AppointmentsController {
   @Put('/update')
   modifyAppointment(@Body() updAppointmentDto: UpdateAppointmentDto){
     return this.appointmentsService.update(updAppointmentDto)
+  }
+
+  @Post('/remove')
+  removeAppointment(@Body() id:string ){
+    return this.appointmentsService.remove(id)
   }
 }
