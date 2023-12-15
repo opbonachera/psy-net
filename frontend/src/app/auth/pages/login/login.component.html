@@ -1,15 +1,14 @@
 <!--<div class="opacity-light" style="width: 100%; height:100vh">
     <img src="../../../../assets/background.jpg" alt="" style="height: 100%; width:100%">
 </div>-->
-<div style="height: 100vh;" class="bg-primary-cust d-flex justify-content-center align-items-center flex-column  position-absolute top-0 w-100">
-    
+<div style="height: 80vh;" class="bg-primary-cust d-flex justify-content-center align-items-center flex-column">
     <div>
         <hr />
         <h1 class="cursive-font">Red de psicologos</h1>
         <p class="text-center common-font">Ingresar</p>
         <hr />
     </div>
-    <div class="p-5 w-50">
+    <div class="">
         <form action="" class="form-group d-flex flex-column align-items-center justify-content-center" [formGroup]="loginForm" (ngSubmit)="onSave()">
             
             <input type="text"
@@ -30,8 +29,8 @@
                 {{ getFieldError('password') }}
             </span>
 
-            <button class="btn btn-outline-dark cursive-font mt-3">Iniciar Sesion</button>
-            <p class="pt-3">¿No tenes una cuenta? <a routerLink='/auth/register'>Registrarse</a></p>
+            <button class="btn btn-outline-dark cursive-font m-3">Iniciar Sesion</button>
+            <p class="">¿No tenes una cuenta? <a routerLink='/auth/register'>Registrarse</a></p>
             
         </form>
     </div>

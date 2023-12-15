@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { User } from 'src/auth/entities/user.entity';
-
+import mongoose from 'mongoose';
 @Schema()
 export class Appointment {
     _id?:string;
@@ -8,7 +8,7 @@ export class Appointment {
     @Prop({ unique:true, required:true })
     date: string;
 
-    @Prop({ required:true })
+    // @Prop({ required:true, type: mongoose.Schema.Types.ObjectId, ref:'Owner' })
     // user: User;
 
     @Prop({ required:true })

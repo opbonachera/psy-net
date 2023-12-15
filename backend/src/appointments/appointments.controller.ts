@@ -15,12 +15,12 @@ export class AppointmentsController {
   }
 
   @Put('/update')
-  modifyAppointment(@Body() updAppointmentDto: UpdateAppointmentDto){
+  modifyAppointment( @Body() updAppointmentDto: UpdateAppointmentDto){
     return this.appointmentsService.update(updAppointmentDto)
   }
 
   @Post('/remove')
-  removeAppointment(@Body() id:string ){
+  removeAppointment( @Body() id:string ){
     return this.appointmentsService.remove(id)
   }
 }

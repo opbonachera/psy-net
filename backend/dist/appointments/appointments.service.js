@@ -28,6 +28,7 @@ let AppointmentsService = class AppointmentsService {
             return newApp;
         }
         catch (err) {
+            console.log(err);
             if (err.code === 11000)
                 throw new common_1.UnauthorizedException(`Appointment on date ${createAppointmentDto.date} is alredy taken.`);
         }

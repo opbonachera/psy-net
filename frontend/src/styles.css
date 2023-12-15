@@ -15,10 +15,18 @@
     background-color: rgb(242, 235, 255);
 }
 
+.bg-lighter{
+    background-color: rgb(226, 211, 254); 
+}
+
 a{
     color: rgb(72, 55, 88);
 }
 
 .valid-field{
     border: 2px solid rgba(223, 255, 223, 0.503);
+}
+
+.bg-transparent{
+    background-color: none;
 }

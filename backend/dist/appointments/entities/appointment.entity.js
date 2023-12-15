@@ -20,7 +20,6 @@ __decorate([
 ], Appointment.prototype, "date", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
-    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Appointment.prototype, "message", void 0);
 __decorate([
