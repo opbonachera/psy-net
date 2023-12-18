@@ -51,6 +51,7 @@ export class AppointmentsService {
   }
 
   findOne(id: number) {
+    // Find appointments filtering by user id 
     return `This action returns a #${id} appointment`;
   }
 
