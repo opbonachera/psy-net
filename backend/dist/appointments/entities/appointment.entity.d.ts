@@ -26,6 +26,7 @@ import mongoose from 'mongoose';
 export declare class Appointment {
     _id?: string;
     date: string;
+    userId: string;
     message: string;
     state: string;
     removed: boolean;

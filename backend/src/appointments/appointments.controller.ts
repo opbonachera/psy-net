@@ -8,7 +8,7 @@ import { RemoveAppointmentDto } from './dto/remove-appointment.dto';
 export class AppointmentsController {
   
   constructor(private readonly appointmentsService: AppointmentsService) {}
-
+  // Implement guard
   @Get('/create')
   createAppointment(@Body() createAppDto: CreateAppointmentDto){
     return this.appointmentsService.create(createAppDto)

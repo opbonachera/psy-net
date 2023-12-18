@@ -15,7 +15,7 @@ export class AppointmentsService {
   ){}
 
   async create(createAppointmentDto: CreateAppointmentDto) {
-
+    // Get id from logged user and add into appointment dto before creating it
     try {
       
       const newApp = await this.appointmentModel.create(createAppointmentDto);

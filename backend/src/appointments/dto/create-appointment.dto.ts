@@ -14,4 +14,7 @@ export class CreateAppointmentDto {
     @IsString()
     state:string
 
+    @IsNotEmpty()
+    @IsString()
+    userId: string
 }
