@@ -14,11 +14,16 @@ export class AppointmentsService {
     private appointmentModel: Model<Appointment>
   ){}
 
-  async create(createAppointmentDto: CreateAppointmentDto) {
+  async create(createAppointmentDto: CreateAppointmentDto, id:string) {
     // Get id from logged user and add into appointment dto before creating it
     try {
       
-      const newApp = await this.appointmentModel.create(createAppointmentDto);
+      const appointment = {
+        userId: id,
+        ...createAppointmentDto
+      }
+
+      const newApp = await this.appointmentModel.create(appointment);
 
       await newApp.save();
 
@@ -32,14 +37,13 @@ export class AppointmentsService {
   }
 
   async update( updateAppointmentDto: UpdateAppointmentDto ){
-    const { _id, date, state, message } = updateAppointmentDto;
-    // console.log(_id)
+    const { date, state, message } = updateAppointmentDto;
 
     try{
       
-      const updatedApp = this.appointmentModel.findOneAndUpdate({ date:date },
-                                                                {'message': message,
-                                                                 'state': state});
+      const updatedApp = this.appointmentModel.findOneAndUpdate({ 'date':date, },
+                                                                { 'message': message,
+                                                                  'state': state });
 
       if(!updatedApp) throw new UnauthorizedException("Appointment does not exist");
 
@@ -50,13 +54,15 @@ export class AppointmentsService {
     }
   }
 
-  findOne(id: number) {
+  async findAppointmentsById( userId: string ) {
     // Find appointments filtering by user id 
-    return `This action returns a #${id} appointment`;
+   const appointments = await this.appointmentModel.find({ userId: userId }).exec()
+   
+   return appointments;
   }
 
 
   async remove(id: string) {
-    return this.appointmentModel.findOneAndDelete({ _id: id });
+    return this.appointmentModel.findOneAndDelete({ _id: id }).exec();
   }
 }

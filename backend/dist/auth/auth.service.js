@@ -54,6 +54,7 @@ let AuthService = class AuthService {
         catch (err) {
             if (err.code === 11000)
                 throw new common_1.BadRequestException(`${createUserDto.username} already exists`);
+            console.log(err);
             throw new common_1.InternalServerErrorException("Something unexpected happened");
         }
     }
@@ -65,7 +66,7 @@ let AuthService = class AuthService {
         };
     }
     async findUserById(id) {
-        const user = await this.userModel.findById({ id });
+        const user = await this.userModel.findById(id);
         const { password, ...rest } = user.toJSON();
         return rest;
     }
@@ -73,6 +74,7 @@ let AuthService = class AuthService {
         const token = this.jwtService.sign(payload);
         return token;
     }
+    checkToken() { }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([

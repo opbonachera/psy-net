@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { JwtModule } from '@nestjs/jwt';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { AuthService } from './auth.service';
@@ -23,6 +23,9 @@ import { User, UserSchema } from './entities/user.entity';
       name: User.name,
       schema: UserSchema
     }])
+  ],
+  exports:[
+    AuthService
   ]
 })
 

@@ -17,29 +17,40 @@ const common_1 = require("@nestjs/common");
 const appointments_service_1 = require("./appointments.service");
 const create_appointment_dto_1 = require("./dto/create-appointment.dto");
 const update_appointment_dto_1 = require("./dto/update-appointment.dto");
+const auth_guard_1 = require("../shared/guards/auth.guard");
+const common_2 = require("@nestjs/common");
 let AppointmentsController = class AppointmentsController {
     constructor(appointmentsService) {
         this.appointmentsService = appointmentsService;
     }
-    createAppointment(createAppDto) {
-        return this.appointmentsService.create(createAppDto);
+    createAppointment(createAppDto, req) {
+        const id = req['user']._id.toString();
+        return this.appointmentsService.create(createAppDto, id);
     }
     modifyAppointment(updAppointmentDto) {
         return this.appointmentsService.update(updAppointmentDto);
     }
-    removeAppointment(id) {
+    removeAppointment(req) {
+        const id = req['user']._id.toString();
         return this.appointmentsService.remove(id);
+    }
+    listAppointmentsByUserID(req) {
+        const userId = req['user']._id.toString();
+        return this.appointmentsService.findAppointmentsById(userId);
     }
 };
 exports.AppointmentsController = AppointmentsController;
 __decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Get)('/create'),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_2.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_appointment_dto_1.CreateAppointmentDto]),
+    __metadata("design:paramtypes", [create_appointment_dto_1.CreateAppointmentDto, Object]),
     __metadata("design:returntype", void 0)
 ], AppointmentsController.prototype, "createAppointment", null);
 __decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Put)('/update'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -47,12 +58,21 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AppointmentsController.prototype, "modifyAppointment", null);
 __decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Post)('/remove'),
-    __param(0, (0, common_1.Body)()),
+    __param(0, (0, common_2.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], AppointmentsController.prototype, "removeAppointment", null);
+__decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Get)('/list'),
+    __param(0, (0, common_2.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppointmentsController.prototype, "listAppointmentsByUserID", null);
 exports.AppointmentsController = AppointmentsController = __decorate([
     (0, common_1.Controller)('appointments'),
     __metadata("design:paramtypes", [appointments_service_1.AppointmentsService])

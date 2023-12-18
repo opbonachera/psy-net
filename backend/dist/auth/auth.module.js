@@ -33,6 +33,9 @@ exports.AuthModule = AuthModule = __decorate([
                     name: user_entity_1.User.name,
                     schema: user_entity_1.UserSchema
                 }])
+        ],
+        exports: [
+            auth_service_1.AuthService
         ]
     })
 ], AuthModule);

@@ -12,6 +12,10 @@ const appointments_service_1 = require("./appointments.service");
 const appointments_controller_1 = require("./appointments.controller");
 const mongoose_1 = require("@nestjs/mongoose");
 const appointment_entity_1 = require("./entities/appointment.entity");
+const jwt_1 = require("@nestjs/jwt");
+const constants_1 = require("../auth/constants");
+const config_1 = require("@nestjs/config");
+const auth_module_1 = require("../auth/auth.module");
 let AppointmentsModule = class AppointmentsModule {
 };
 exports.AppointmentsModule = AppointmentsModule;
@@ -25,7 +29,14 @@ exports.AppointmentsModule = AppointmentsModule = __decorate([
                     name: appointment_entity_1.Appointment.name,
                     schema: appointment_entity_1.AppointmentSchema
                 }
-            ])
+            ]),
+            config_1.ConfigModule.forRoot(),
+            jwt_1.JwtModule.register({
+                global: true,
+                secret: constants_1.jwtSecret.secret,
+                signOptions: { expiresIn: '60m' }
+            }),
+            auth_module_1.AuthModule
         ]
     })
 ], AppointmentsModule);

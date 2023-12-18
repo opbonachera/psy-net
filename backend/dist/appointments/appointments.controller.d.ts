@@ -29,13 +29,16 @@ import { UpdateAppointmentDto } from './dto/update-appointment.dto';
 export declare class AppointmentsController {
     private readonly appointmentsService;
     constructor(appointmentsService: AppointmentsService);
-    createAppointment(createAppDto: CreateAppointmentDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
+    createAppointment(createAppDto: CreateAppointmentDto, req: Request): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
         _id: string;
     }>>;
     modifyAppointment(updAppointmentDto: UpdateAppointmentDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
         _id: string;
     }>>;
-    removeAppointment(id: string): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
+    removeAppointment(req: Request): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
         _id: string;
     }>>;
+    listAppointmentsByUserID(req: Request): Promise<(import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
+        _id: string;
+    }>)[]>;
 }

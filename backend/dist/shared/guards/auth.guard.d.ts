@@ -6,4 +6,5 @@ export declare class AuthGuard implements CanActivate {
     private authService;
     constructor(jwtService: JwtService, authService: AuthService);
     canActivate(context: ExecutionContext): Promise<boolean>;
+    private extractTokenFromHeader;
 }

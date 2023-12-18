@@ -12,8 +12,9 @@ import { UnauthorizedException } from '@nestjs/common';
 import { CreateUserDto } from './dto/register-user-dto';
 import { LoginDto } from './dto/login-dto';
 import { User } from './entities/user.entity';
-import { jwtSecret } from './constants';
+
 import { JwtPayload } from './interfaces/payload.interface';
+import { LoginResponse } from './interfaces/login.response';
 @Injectable()
 export class AuthService {
   constructor(
@@ -61,7 +62,7 @@ export class AuthService {
     }catch(err){
         
         if(err.code === 11000 ) throw new BadRequestException(`${ createUserDto.username } already exists`);
-
+        console.log(err)
         throw new InternalServerErrorException("Something unexpected happened");
         
     }
@@ -77,9 +78,9 @@ export class AuthService {
   }
 
   async findUserById( id:string ){
-    const user = await this.userModel.findById({ id });
+    const user = await this.userModel.findById( id );
     const { password, ...rest } = user.toJSON();
-
+    
     return rest;
   }
 
@@ -87,4 +88,6 @@ export class AuthService {
     const token = this.jwtService.sign(payload);
     return token;
   }
+
+  public checkToken(){}
 }

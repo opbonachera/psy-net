@@ -19,9 +19,28 @@ let AuthGuard = class AuthGuard {
         this.authService = authService;
     }
     async canActivate(context) {
-        const request = context.switchToHttp().getRequest();
-        const token = this.
-        ;
+        const req = context.switchToHttp().getRequest();
+        const token = this.extractTokenFromHeader(req);
+        if (!token)
+            throw new common_1.UnauthorizedException("Token is required");
+        try {
+            const payload = await this.jwtService.verifyAsync(token, { secret: process.env.JWT_SEED });
+            const user = await this.authService.findUserById(payload.id);
+            if (!user)
+                throw new common_1.UnauthorizedException("User does not exist");
+            if (!user.isActive)
+                throw new common_1.UnauthorizedException("User is not active");
+            req['user'] = user;
+        }
+        catch (err) {
+            console.log(err);
+            throw new common_1.UnauthorizedException("There has been an error");
+        }
+        return true;
+    }
+    extractTokenFromHeader(request) {
+        const [type, token] = request.headers['authorization']?.split(' ') ?? [];
+        return type === 'Bearer' ? token : undefined;
     }
 };
 exports.AuthGuard = AuthGuard;

@@ -21,9 +21,13 @@ let AppointmentsService = class AppointmentsService {
     constructor(appointmentModel) {
         this.appointmentModel = appointmentModel;
     }
-    async create(createAppointmentDto) {
+    async create(createAppointmentDto, id) {
         try {
-            const newApp = await this.appointmentModel.create(createAppointmentDto);
+            const appointment = {
+                userId: id,
+                ...createAppointmentDto
+            };
+            const newApp = await this.appointmentModel.create(appointment);
             await newApp.save();
             return newApp;
         }
@@ -34,9 +38,9 @@ let AppointmentsService = class AppointmentsService {
         }
     }
     async update(updateAppointmentDto) {
-        const { _id, date, state, message } = updateAppointmentDto;
+        const { date, state, message } = updateAppointmentDto;
         try {
-            const updatedApp = this.appointmentModel.findOneAndUpdate({ date: date }, { 'message': message,
+            const updatedApp = this.appointmentModel.findOneAndUpdate({ 'date': date, }, { 'message': message,
                 'state': state });
             if (!updatedApp)
                 throw new common_1.UnauthorizedException("Appointment does not exist");
@@ -46,11 +50,12 @@ let AppointmentsService = class AppointmentsService {
             throw new common_1.UnauthorizedException("Unexpected error");
         }
     }
-    findOne(id) {
-        return `This action returns a #${id} appointment`;
+    async findAppointmentsById(userId) {
+        const appointments = await this.appointmentModel.find({ userId: userId }).exec();
+        return appointments;
     }
     async remove(id) {
-        return this.appointmentModel.findOneAndDelete({ _id: id });
+        return this.appointmentModel.findOneAndDelete({ _id: id }).exec();
     }
 };
 exports.AppointmentsService = AppointmentsService;
