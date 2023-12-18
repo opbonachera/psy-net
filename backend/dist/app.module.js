@@ -14,6 +14,7 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const appointments_module_1 = require("./appointments/appointments.module");
 const auth_module_1 = require("./auth/auth.module");
+const shared_module_1 = require("./shared/shared.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -24,6 +25,7 @@ exports.AppModule = AppModule = __decorate([
             mongoose_1.MongooseModule.forRoot(process.env.MONGO_URL),
             appointments_module_1.AppointmentsModule,
             auth_module_1.AuthModule,
+            shared_module_1.SharedModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
