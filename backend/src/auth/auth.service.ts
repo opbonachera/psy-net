@@ -85,9 +85,9 @@ export class AuthService {
   }
 
   public getJwtToken( payload: JwtPayload ){
+    
     const token = this.jwtService.sign(payload);
     return token;
   }
 
-  public checkToken(){}
 }

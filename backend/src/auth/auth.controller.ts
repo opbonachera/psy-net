@@ -11,12 +11,12 @@ import { LoginResponse } from './interfaces/login.response';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Get('/register')
+  @Post('/register')
   create(@Body() createUserDto: CreateUserDto) {
     return this.authService.create(createUserDto);
   }
 
-  @Get('/login')
+  @Post('/login')
   login(@Body() loginDto: LoginDto){
     return this.authService.login(loginDto);
   }
@@ -29,14 +29,19 @@ export class AuthController {
 
   @UseGuards( AuthGuard )
   @Get('/check-token')
-  checkToken( @Request() req: Request ): LoginResponse{
-    const user = req['user'] as User;
+  checkToken( @Request() req: Request ){
+    try { 
+      const user = req['user'] as User;
 
-    return {
-      user,
-      token: this.authService.getJwtToken({ id: user._id })
+      return {
+        user,
+        token: this.authService.getJwtToken({ id: user._id })
+      }
+    }catch(err){
+      console.log(err)
     }
   } 
+
   // @Get()
   // findAll() {
   //   return this.authService.findAll();

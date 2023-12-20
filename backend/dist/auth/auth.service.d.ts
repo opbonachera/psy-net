@@ -57,5 +57,4 @@ export declare class AuthService {
         isActive: boolean;
     }>;
     getJwtToken(payload: JwtPayload): string;
-    checkToken(): void;
 }

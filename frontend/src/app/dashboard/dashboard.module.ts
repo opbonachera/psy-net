@@ -7,7 +7,6 @@ import { DashboardRoutingModule } from './dashboard.routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardHeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 
 @NgModule({
@@ -23,8 +22,7 @@ import { AppointmentComponent } from './components/appointment/appointment.compo
     FormsModule,
     ReactiveFormsModule,
     DashboardRoutingModule,
-    SharedModule,
-    NgbModule
+    SharedModule
   ]
 })
 export class DashboardModule { }

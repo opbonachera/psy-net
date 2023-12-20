@@ -34,7 +34,7 @@ let AuthGuard = class AuthGuard {
         }
         catch (err) {
             console.log(err);
-            throw new common_1.UnauthorizedException("There has been an error");
+            throw new common_1.UnauthorizedException("Token has expired");
         }
         return true;
     }

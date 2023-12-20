@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router'
 import { RegisterComponent } from "./pages/register/register.component";
 import { LoginComponent } from "./pages/login/login.component";
+import { isNotAuthenticatedGuard } from "./guards/isnotauthenticated.guard";
 
 const routes: Routes = [
     {
@@ -13,6 +14,7 @@ const routes: Routes = [
             },
             {
                 path: 'login',
+                canActivate: [ isNotAuthenticatedGuard ],
                 component: LoginComponent
             }
         ]

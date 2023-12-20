@@ -19,15 +19,6 @@
                 {{ getFieldError('fullName') }}
             </span>
 
-            <input type="username"
-                   formControlName="username"
-                   class="form-control mt-3"
-                   placeholder="Nombre de usuario">
-            <span *ngIf="isValidField('username')"
-                    class="form-text text-danger">
-                {{ getFieldError('username') }}
-            </span>
-
             <input type="email"
             formControlName="email"
             class="form-control mt-3"

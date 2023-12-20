@@ -32,23 +32,28 @@ let AuthController = class AuthController {
     test() {
     }
     checkToken(req) {
-        const user = req['user'];
-        return {
-            user,
-            token: this.authService.getJwtToken({ id: user._id })
-        };
+        try {
+            const user = req['user'];
+            return {
+                user,
+                token: this.authService.getJwtToken({ id: user._id })
+            };
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
 };
 exports.AuthController = AuthController;
 __decorate([
-    (0, common_1.Get)('/register'),
+    (0, common_1.Post)('/register'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [register_user_dto_1.CreateUserDto]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "create", null);
 __decorate([
-    (0, common_1.Get)('/login'),
+    (0, common_1.Post)('/login'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [login_dto_1.LoginDto]),
@@ -67,7 +72,7 @@ __decorate([
     __param(0, (0, common_2.Request)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Object)
+    __metadata("design:returntype", void 0)
 ], AuthController.prototype, "checkToken", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),

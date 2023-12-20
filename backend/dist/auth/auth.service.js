@@ -74,7 +74,6 @@ let AuthService = class AuthService {
         const token = this.jwtService.sign(payload);
         return token;
     }
-    checkToken() { }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([

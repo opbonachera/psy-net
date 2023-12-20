@@ -4,6 +4,7 @@ import { DashboardPage } from "./pages/dashboard-page/dashboard-page.component";
 import { AppointmentComponent } from "./components/appointment/appointment.component";
 import { AppointmentListComponent } from "../appointments/components/components/appointment-list/appointment-list.component";
 import { MenuComponent } from "./components/menu/menu.component";
+import { isAuthenticatedGuard } from "../auth/guards/is-authenticated.guard";
 
 const routes: Routes = [{
     path: '',
@@ -16,14 +17,17 @@ const routes: Routes = [{
             children:[
                 {
                     path: '',
+                    canActivate: [isAuthenticatedGuard],
                     component: MenuComponent
                 },
                 {
                     path: 'appointment-id',
+                    canActivate: [isAuthenticatedGuard],
                     component: AppointmentComponent
                 },
                 {
                     path:'list',
+                    canActivate: [isAuthenticatedGuard],
                     component:AppointmentListComponent
                 },
             ]

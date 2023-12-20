@@ -2,7 +2,6 @@ import { AuthService } from './auth.service';
 import { CreateUserDto } from './dto/register-user-dto';
 import { LoginDto } from './dto/login-dto';
 import { User } from './entities/user.entity';
-import { LoginResponse } from './interfaces/login.response';
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
@@ -19,5 +18,8 @@ export declare class AuthController {
         token: string;
     }>;
     test(): void;
-    checkToken(req: Request): LoginResponse;
+    checkToken(req: Request): {
+        user: User;
+        token: string;
+    };
 }
