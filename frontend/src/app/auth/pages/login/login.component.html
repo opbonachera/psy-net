@@ -8,7 +8,8 @@
         <p class="text-center common-font">Ingresar</p>
         <hr />
     </div>
-    <div class="">
+    <p class="pt-3 common-font fs-6">¿No tenes una cuenta? <a routerLink="/auth/register">Obtener cuenta</a></p>
+    <div class="p-50 w-25">
         <form action="" class="form-group d-flex flex-column align-items-center justify-content-center" [formGroup]="loginForm" (ngSubmit)="onSave()">
             
             <input type="text"
@@ -30,7 +31,6 @@
             </span>
 
             <button class="btn btn-outline-dark cursive-font m-3">Iniciar Sesion</button>
-            <p class="">¿No tenes una cuenta? <a routerLink='/auth/register'>Registrarse</a></p>
             
         </form>
     </div>

@@ -41,19 +41,15 @@ export class RegisterComponent implements OnInit {
           return 'Error';
       }
     }
-
-    return ''
+    
+    return '';
   }
 
   onSave(){
 
-    if(this.registerForm.valid){
+    if(this.registerForm.invalid){
       this.registerForm.markAllAsTouched;
       return;
-    }
-
-    if(this.registerForm.pristine){
-      this.pristine = true;
     }
 
     console.log(this.registerForm.value);

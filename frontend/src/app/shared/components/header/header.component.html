@@ -8,13 +8,16 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
        
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" [routerLink]="['/home']">Fundación</a>
+            <a class="nav-link" aria-current="page" [routerLink]="['/home']" fragment="foundation">Fundación</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" [routerLink]="['/home']">Obtener Turno</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['/home']" fragment="services">Servicios</a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" [routerLink]="['/home']" fragment="appointment">Obtener Turno</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" [routerLink]="['/home']">Contacto</a>
+            <a class="nav-link" aria-current="page" [routerLink]="['/home']" fragment="contact">Contacto</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" [routerLink]="['/auth/login']">Ingresar</a>

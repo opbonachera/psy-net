@@ -5,6 +5,8 @@
             <p class="text-center common-font">Registrarse</p>
         <hr />
     </div>
+    
+    <p class="pt-3 common-font fs-6">¿Ya tenes una cuenta? <a routerLink="/auth/login">Iniciar Sesion</a></p>
     <div class="p-5 w-50">
         <form action="" class="form-group d-flex flex-column align-items-center justify-content-center" [formGroup]="registerForm" (ngSubmit)="onSave()">
             
@@ -62,11 +64,7 @@
             {{ getFieldError('repeatPassword') }}
             </span>
 
-            <span *ngIf="pristine" class="text-danger p-2">
-                    Por favor complete el formulario.
-            </span>
             <button class="btn btn-outline-dark cursive-font mt-3">Registrarse</button>
-            <p class="pt-3">¿Ya tenes una cuenta? <a routerLink="/auth/login">Iniciar Sesion</a></p>
         </form>
     </div>
 </div>
