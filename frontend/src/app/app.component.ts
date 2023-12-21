@@ -20,10 +20,9 @@ export class AppComponent {
   } )
 
   public authStatusChangedEffect = effect(()=>{
-
+    console.log(this.authService.authStatus())
     switch( this.authService.authStatus()){
-      case AuthStatus.checking:
-        return;
+
       case AuthStatus.authenticated:
         this.router.navigateByUrl('/dashboard');
         return;

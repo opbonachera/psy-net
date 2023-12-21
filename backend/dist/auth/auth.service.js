@@ -74,6 +74,13 @@ let AuthService = class AuthService {
         const token = this.jwtService.sign(payload);
         return token;
     }
+    async getTakenUsernames() {
+        const users = await this.userModel.find({});
+        const takenUsernames = [];
+        for (let user of users)
+            takenUsernames.push(user.username);
+        return takenUsernames;
+    }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([

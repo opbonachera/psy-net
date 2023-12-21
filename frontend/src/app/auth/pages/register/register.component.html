@@ -15,8 +15,17 @@
                    class="form-control mt-3"
                    placeholder="Nombre completo">
             <span *ngIf="isValidField('fullName')"
-                    class="form-text text-danger">
+                    class="form-text text-danger  align-self-start">
                 {{ getFieldError('fullName') }}
+            </span>
+
+            <input type="username"
+            formControlName="username"
+            class="form-control mt-3"
+            placeholder="Nombre de usuario">
+            <span *ngIf="isValidField('username')"
+                    class="form-text text-danger  align-self-start">
+                {{ getFieldError('username') }}
             </span>
 
             <input type="email"
@@ -24,25 +33,17 @@
             class="form-control mt-3"
             placeholder="Email">
             <span *ngIf="isValidField('email')"
-                    class="form-text text-danger">
+                    class="form-text text-danger  align-self-start">
                 {{ getFieldError('email') }}
             </span>
 
-            <input type=""
-            formControlName="phone"
-            class="form-control mt-3"
-            placeholder="Numero de telefono">
-            <span *ngIf="isValidField('phone')"
-                class="form-text text-danger">
-            {{ getFieldError('phone') }}
-            </span>
-
+    
             <input type=""
             formControlName="password"
-            class="form-control mt-3"
+            class="form-control mt-3 "
             placeholder="Contraseña">
             <span *ngIf="isValidField('password')"
-                class="form-text text-danger">
+                class="form-text text-danger  align-self-start">
             {{ getFieldError('password') }}
             </span>
 
@@ -51,11 +52,17 @@
             class="form-control mt-3"
             placeholder="Repetir contraseña">
             <span *ngIf="isValidField('repeatPassword')"
-                class="form-text text-danger">
+                class="form-text text-danger text-start align-self-start">
             {{ getFieldError('repeatPassword') }}
             </span>
 
             <button class="btn btn-outline-dark cursive-font mt-3">Registrarse</button>
         </form>
     </div>
+
+    <ngb-toast *ngIf="show" [delay]="3000" class="text-center"> 
+        {{ toastContent }}
+    </ngb-toast>
+
+    <pre>{{ registerForm.valid }}</pre>
 </div>

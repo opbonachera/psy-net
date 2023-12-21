@@ -6,15 +6,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard.routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardHeaderComponent } from './components/header/header.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
+import { AppointmentsModule } from '../appointments/appointments.module';
+import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 
 @NgModule({
   declarations: [
     DashboardPage,
     DashboardHeaderComponent,
-    MenuComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    SidemenuComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +23,8 @@ import { AppointmentComponent } from './components/appointment/appointment.compo
     FormsModule,
     ReactiveFormsModule,
     DashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    AppointmentsModule
   ]
 })
 export class DashboardModule { }

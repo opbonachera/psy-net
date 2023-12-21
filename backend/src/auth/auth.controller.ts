@@ -42,10 +42,10 @@ export class AuthController {
     }
   } 
 
-  // @Get()
-  // findAll() {
-  //   return this.authService.findAll();
-  // }
+  @Get('/user-list')
+  getUsernames() {
+    return this.authService.getTakenUsernames();
+  }
 
   // @Get(':id')
   // findOne(@Param('id') id: string) {

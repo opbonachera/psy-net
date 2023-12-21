@@ -3,7 +3,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { DashboardPage } from "./pages/dashboard-page/dashboard-page.component";
 import { AppointmentComponent } from "./components/appointment/appointment.component";
 import { AppointmentListComponent } from "../appointments/components/components/appointment-list/appointment-list.component";
-import { MenuComponent } from "./components/menu/menu.component";
 import { isAuthenticatedGuard } from "../auth/guards/is-authenticated.guard";
 
 const routes: Routes = [{
@@ -17,17 +16,17 @@ const routes: Routes = [{
             children:[
                 {
                     path: '',
-                    canActivate: [isAuthenticatedGuard],
-                    component: MenuComponent
+                    // canActivate: [isAuthenticatedGuard],
+                    component: AppointmentComponent
                 },
                 {
                     path: 'appointment-id',
-                    canActivate: [isAuthenticatedGuard],
+                    // canActivate: [isAuthenticatedGuard],
                     component: AppointmentComponent
                 },
                 {
                     path:'list',
-                    canActivate: [isAuthenticatedGuard],
+                    // canActivate: [isAuthenticatedGuard],
                     component:AppointmentListComponent
                 },
             ]

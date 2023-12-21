@@ -12,7 +12,6 @@ export declare class AuthController {
             fullName: string;
             username: string;
             email: string;
-            phoneNumber: number;
             isActive: boolean;
         };
         token: string;
@@ -22,4 +21,5 @@ export declare class AuthController {
         user: User;
         token: string;
     };
+    getUsernames(): Promise<any[]>;
 }

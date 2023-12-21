@@ -38,7 +38,6 @@ export declare class AuthService {
             fullName: string;
             username: string;
             email: string;
-            phoneNumber: number;
             isActive: boolean;
         };
         token: string;
@@ -53,8 +52,8 @@ export declare class AuthService {
         fullName: string;
         username: string;
         email: string;
-        phoneNumber: number;
         isActive: boolean;
     }>;
     getJwtToken(payload: JwtPayload): string;
+    getTakenUsernames(): Promise<any[]>;
 }

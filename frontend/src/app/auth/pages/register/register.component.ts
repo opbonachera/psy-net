@@ -1,28 +1,36 @@
-import { Component, type OnInit } from '@angular/core';
+import { Component, ViewChild, type OnInit, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { UsernameValidator } from '../../validators/username-validator.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent{
+  @ViewChild('input') input: ElementRef
+
   public pristine: boolean = false;
-
-  ngOnInit(): void { }
-
-  constructor(
-    private fb: FormBuilder
-  ){}
+  public show:boolean = false;
+  public toastContent:string;
+  public usernames:any;
 
   public registerForm: FormGroup = this.fb.group({
     fullName: ['', [Validators.required]],
-    username: ['', [Validators.required]],
-    email:    ['', [Validators.required, Validators.email]],
-    phone:    ['', [Validators.required, Validators.min(7)]],
-    password: ['', [Validators.required]],
-    repeatPassword: ['', [Validators.required]],
+    username: ['opaula', [Validators.required], [new UsernameValidator() ]],
+    email:    ['oopaula@gmail.com', [Validators.required, Validators.email]],
+    password: ['aaaaa', [Validators.required]],
+    repeatPassword: ['aaaaa', [Validators.required]],
   })
+
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ){}
 
   isValidField( field:string ){
     return this.registerForm.controls[field].errors && this.registerForm.controls[field].touched;
@@ -36,7 +44,9 @@ export class RegisterComponent implements OnInit {
     for(const key of Object.keys(errors)){
       switch(key){
         case 'required':
-          return 'Field is required'
+          return 'Rellene el campo'
+        case 'usernameTaken':
+          return 'Ese nombre de usuario ya existe'
         default:
           return 'Error';
       }
@@ -52,7 +62,28 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    console.log(this.registerForm.value);
+    const { username, fullName, password, email } = this.registerForm.value;
+
+    this.authService.register(username, fullName, email, password, true)
+    .subscribe({
+      next: ()=>{
+        this.show=true;
+        this.toastContent='Cuenta creada correctamente.'
+
+        setTimeout(() => {
+          this.router.navigateByUrl('/auth/login')
+        }, 3500);
+
+      },
+      
+      error: (err)=>{
+        this.show = true;
+        this.toastContent = 'Ocurrió un error inesperado. Intente nuevamente.'
+        console.log(err)
+      }
+    }
+    )
+    
     this.registerForm.reset();
   }
 

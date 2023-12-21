@@ -43,6 +43,9 @@ let AuthController = class AuthController {
             console.log(err);
         }
     }
+    getUsernames() {
+        return this.authService.getTakenUsernames();
+    }
 };
 exports.AuthController = AuthController;
 __decorate([
@@ -74,6 +77,12 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "checkToken", null);
+__decorate([
+    (0, common_1.Get)('/user-list'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "getUsernames", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService])

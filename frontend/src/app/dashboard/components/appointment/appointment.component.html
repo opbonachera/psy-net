@@ -1,4 +1,4 @@
-
+<!-- 
    <div class="row justify-content-center align-items-center" style="height: 92vh;">
         <div class="col-12 col-md-6 col-lg-6 text-center p-5 w-50">
             <p class="common-font">TURNO</p>
@@ -27,4 +27,12 @@
         </div>
    </div>
 
+-->
 
+ <div *ngIf="appointment; else noAppointment">
+    <app-appointment-card></app-appointment-card>
+</div>
+
+<ng-template #noAppointment>
+    <new-appointment></new-appointment>
+</ng-template>

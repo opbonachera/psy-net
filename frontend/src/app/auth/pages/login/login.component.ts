@@ -2,8 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import Swal from 'sweetalert2';
-
 import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'login',
@@ -14,12 +12,15 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit{
   constructor( private fb: FormBuilder ){}
   
+  public show: boolean = false;
+  public toastContent: string = "";
+
   private authService = inject(AuthService);
   private router = inject(Router);
 
   public loginForm: FormGroup = this.fb.group({
-    username:['obonachera',Validators.required],
-    password:['orne', Validators.required]
+    username:['opaula',Validators.required],
+    password:['aaaaa', Validators.required]
   })
 
   isValidField( field:string ){
@@ -56,7 +57,11 @@ export class LoginComponent implements OnInit{
     this.authService.login(username, password)
     .subscribe({
         next: () => this.router.navigateByUrl('/dashboard'),
-        error: (message:any)=> Swal.fire('Error', message.error)
+        error: (err:any)=> {
+          this.show=true;
+          this.toastContent='Ocurrió un error inesperado. Intente nuevamente.'
+          console.log(err)
+        }
     })
     
     this.loginForm.reset();

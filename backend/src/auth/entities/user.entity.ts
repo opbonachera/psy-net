@@ -16,9 +16,6 @@ export class User{
     email:string;
 
     @Prop({ required:true })
-    phoneNumber:number;
-
-    @Prop({ required:true })
     password?:string;
 
     @Prop({ required:true })

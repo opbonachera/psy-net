@@ -90,4 +90,13 @@ export class AuthService {
     return token;
   }
 
+  async getTakenUsernames(){
+    const users = await this.userModel.find({})
+    const takenUsernames = []
+
+    for(let user of users) takenUsernames.push(user.username)
+
+    return takenUsernames
+  }
+
 }

@@ -34,4 +34,10 @@
             
         </form>
     </div>
+    
+    <ngb-toast *ngIf="show" [delay]="3000" class="text-center"> 
+        {{ toastContent }}
+    </ngb-toast>
 </div>
+
+
