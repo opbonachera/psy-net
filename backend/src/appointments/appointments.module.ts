@@ -23,7 +23,7 @@ import { AuthModule } from 'src/auth/auth.module';
     JwtModule.register({
       global:true,
       secret: jwtSecret.secret,
-      signOptions: { expiresIn: '60m' }
+      signOptions: { expiresIn: '360m' }
     }),
     AuthModule
   ]

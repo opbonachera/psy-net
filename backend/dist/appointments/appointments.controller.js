@@ -36,13 +36,17 @@ let AppointmentsController = class AppointmentsController {
     }
     listAppointmentsByUserID(req) {
         const userId = req['user']._id.toString();
-        return this.appointmentsService.findAppointmentsById(userId);
+        return this.appointmentsService.findAppointmentsByUserId(userId);
+    }
+    getAppointmentById(body) {
+        const { appId } = body;
+        return this.appointmentsService.findByAppointmentId(appId);
     }
 };
 exports.AppointmentsController = AppointmentsController;
 __decorate([
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
-    (0, common_1.Get)('/create'),
+    (0, common_1.Post)('/create'),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_2.Request)()),
     __metadata("design:type", Function),
@@ -51,7 +55,7 @@ __decorate([
 ], AppointmentsController.prototype, "createAppointment", null);
 __decorate([
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
-    (0, common_1.Put)('/update'),
+    (0, common_1.Patch)('/update'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [update_appointment_dto_1.UpdateAppointmentDto]),
@@ -73,6 +77,14 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], AppointmentsController.prototype, "listAppointmentsByUserID", null);
+__decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Post)('/get-by-id'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppointmentsController.prototype, "getAppointmentById", null);
 exports.AppointmentsController = AppointmentsController = __decorate([
     (0, common_1.Controller)('appointments'),
     __metadata("design:paramtypes", [appointments_service_1.AppointmentsService])

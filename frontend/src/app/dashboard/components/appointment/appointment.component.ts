@@ -1,16 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
+import { AppointmentService } from 'src/app/appointments/services/appointment.service';
 
 @Component({
   selector: 'app-appointment',
   templateUrl: './appointment.component.html',
   styleUrls: ['./appointment.component.css']
 })
-export class AppointmentComponent {
+export class AppointmentComponent implements OnInit{
   constructor(
-    private fb: FormBuilder
-  ){}
+    private activatedRoute: ActivatedRoute,
+    private appointmentService: AppointmentService
+  ){
+   
+  }
 
-  public appointment: boolean = true;
+  //GET APPOINTMENT FOR QUERY PARAMS
+    ngOnInit() {
+      this.activatedRoute.params
+      .pipe(
+        switchMap(({ id })=>this.appointmentService.getAppointmentById(id))
+      ).subscribe(res=>console.log)
+    }
   
 }

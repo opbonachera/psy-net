@@ -1,0 +1,30 @@
+<div class="border p-5">
+    <div class="text-center pt-2">
+        <p class="common-font">PSICOWEB</p>
+        <h3 class="cursive-font">ADMINISTRADOR DE TURNOS</h3>
+        <hr class="mx-5">
+    </div>
+
+    <div>
+        <p class="common-font text-center">¡Bienvenido/a, Ornella!</p>
+        <p class="common-font text-center">Desde este portal podes administrar turnos con los especialistas que integran nuestra red.</p>
+    </div>
+
+    <div class="mt-5" *ngIf="appointments.length > 1; else noApp">
+        <div class="card d-flex align-items-center justify-content-center p-5">
+            <p class="cursive-font fs-3 mx-4 mt-4">TURNO ACTIVO</p>
+            <small class="mx-4 common-font">Tenes un turno el dia {{ earliestAppointment.date }} | MODALIDAD: Virtual </small>
+            <button class="btn btn-dark cursive-font w-25 m-4" routerLink="/dashboard/">DETALLES</button>
+            
+        </div>
+    </div>
+
+</div>
+
+<ng-template #noApp>
+    <div class="mt-5">
+        <div class="card d-flex align-items-center justify-content-center p-5">
+            <p>No tenes ningun turno activo. <a [routerLink]="['/dashboard/appointments/new']">Obtener turno</a></p>
+        </div>
+    </div>
+</ng-template>

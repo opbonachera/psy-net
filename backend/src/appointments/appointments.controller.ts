@@ -10,14 +10,14 @@ export class AppointmentsController {
   constructor(private readonly appointmentsService: AppointmentsService) {}
   
   @UseGuards( AuthGuard )
-  @Get('/create')
+  @Post('/create')
   createAppointment(@Body() createAppDto: CreateAppointmentDto, @Request() req: Request){
     const id = req['user']._id.toString()
     return this.appointmentsService.create(createAppDto, id)
   }
 
   @UseGuards( AuthGuard )
-  @Put('/update')
+  @Patch('/update')
   modifyAppointment( @Body() updAppointmentDto: UpdateAppointmentDto){
     return this.appointmentsService.update(updAppointmentDto)
   }
@@ -33,6 +33,13 @@ export class AppointmentsController {
   @Get('/list')
   listAppointmentsByUserID( @Request() req: Request){
     const userId = req['user']._id.toString();
-    return this.appointmentsService.findAppointmentsById(userId)
+    return this.appointmentsService.findAppointmentsByUserId(userId)
+  }
+
+  @UseGuards( AuthGuard )
+  @Post('/get-by-id')
+  getAppointmentById( @Body() body: { appId: string}  ){
+  const { appId } = body;
+  return this.appointmentsService.findByAppointmentId(appId)
   }
 }

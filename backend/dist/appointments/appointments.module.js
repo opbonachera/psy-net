@@ -34,7 +34,7 @@ exports.AppointmentsModule = AppointmentsModule = __decorate([
             jwt_1.JwtModule.register({
                 global: true,
                 secret: constants_1.jwtSecret.secret,
-                signOptions: { expiresIn: '60m' }
+                signOptions: { expiresIn: '360m' }
             }),
             auth_module_1.AuthModule
         ]

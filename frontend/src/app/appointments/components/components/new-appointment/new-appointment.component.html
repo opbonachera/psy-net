@@ -5,18 +5,30 @@
     </div>
     
     <div class="d-flex flex-column align-items-center justify-content-center p-3">
-        <form action="" class="form-group w-50">
+        <form action="" class="form-group w-50" [formGroup]="appointmentForm" (ngSubmit)="onSave()">
             <input type="text"
-                   class="form-control my-3"
-                   placeholder="Agregar mensaje...">
+                   class="form-control pt-2"
+                   placeholder="Agregar mensaje..."
+                   formControlName="message">
+            <span *ngIf="isValidField('message')"
+                    class="form-text text-danger">
+                {{ getFieldError('message') }}</span>
 
             <input type="datetime-local"
-                   class="form-control mx-1"
-                   placeholder="Agregar mensaje...">
+                   class="form-control mt-4"
+                   formControlName="date">
+            
+            <button class="btn btn-dark cursive-font mt-3 align-self-center justify-self-center">SOLICITAR</button>
+    
         </form>
 
-        <button class="btn btn-dark cursive-font m-3 align-self-center justify-self-center">SOLICITAR</button>
-    </div>
+        </div>
 
-    <p class="text-center w-50 m-auto p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, eveniet sit, ratione in asperiores aut laborum atque quae animi doloremque placeat autem vero dolor ipsam eaque dicta provident vitae veritatis?</p>
+    <p class="text-center w-75 m-auto p-3">Una vez solicitado el turno, deberas aguardar la confirmacion de un especialista de la red en funcion a la disponibilidad. La confirmacion puede tardar de 24 a 48 horas.</p>
+</div>
+
+<div class="d-flex align-items-center justify-content-center mt-5">
+    <ngb-toast *ngIf="show" [delay]="3000" class="text-center"> 
+        {{ toastContent }}
+    </ngb-toast>
 </div>

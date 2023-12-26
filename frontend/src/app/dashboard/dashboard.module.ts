@@ -9,13 +9,15 @@ import { DashboardHeaderComponent } from './components/header/header.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { AppointmentsModule } from '../appointments/appointments.module';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
     DashboardPage,
     DashboardHeaderComponent,
     AppointmentComponent,
-    SidemenuComponent
+    SidemenuComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,6 @@ import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
     DashboardRoutingModule,
     SharedModule,
     AppointmentsModule
-  ]
+  ],
 })
 export class DashboardModule { }

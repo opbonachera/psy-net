@@ -35,10 +35,13 @@ export declare class AppointmentsService {
     update(updateAppointmentDto: UpdateAppointmentDto): Promise<import("mongoose").Document<unknown, {}, Appointment> & Appointment & Required<{
         _id: string;
     }>>;
-    findAppointmentsById(userId: string): Promise<(import("mongoose").Document<unknown, {}, Appointment> & Appointment & Required<{
+    findAppointmentsByUserId(userId: string): Promise<(import("mongoose").Document<unknown, {}, Appointment> & Appointment & Required<{
         _id: string;
     }>)[]>;
     remove(id: string): Promise<import("mongoose").Document<unknown, {}, Appointment> & Appointment & Required<{
+        _id: string;
+    }>>;
+    findByAppointmentId(id: string): Promise<import("mongoose").Document<unknown, {}, Appointment> & Appointment & Required<{
         _id: string;
     }>>;
 }

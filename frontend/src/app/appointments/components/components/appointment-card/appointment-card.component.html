@@ -1,14 +1,56 @@
-<div class="card shadow-sm text-center common-font">
-    <div class="card-body text-dark p-5">
-      <h5 class="card-title cursive-font fs-4">TENES UN TURNO AGENDADO</h5>
-      <hr>
-      <p class="card-text">FECHA: 23/05/2023 | HORA: 12:55</p>
-      <p>Modalidad virtual. Se te enviará un correo con el enlace de acceso a la videollamada.</p>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, quibusdam commodi excepturi quaerat nam autem officia non et quisquam vel maxime, sunt mollitia amet, corrupti facere culpa praesentium quidem pariatur!</p>
-    </div>
-        <div>
-                <button class="btn btn-dark mx-3 mb-3 cursive-font">MODIFICAR TURNO</button>
-                <button class="btn btn-dark mx-3 mb-3 cursive-font">CANCELAR TURNO</button>
-                <button class="btn btn-dark mx-3 mb-3 cursive-font">DESCARGAR COMPROBANTE</button>
-        </div>
+<div>
+	<div class="card shadow-sm text-center common-font">
+		<div class="card-body text-dark p-5">
+		<h5 class="card-title cursive-font fs-4">TENES UN TURNO AGENDADO</h5>
+		<hr>
+		<p class="card-text">FECHA: 23/05/2023 | HORA: 12:55</p>
+		<p>Modalidad virtual. Se te enviará un correo con el enlace de acceso a la videollamada.</p>
+		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, quibusdam commodi excepturi quaerat nam autem officia non et quisquam vel maxime, sunt mollitia amet, corrupti facere culpa praesentium quidem pariatur!</p>
+		</div>
+			<div>
+					<button class="btn btn-dark mx-3 mb-3 cursive-font" (click)="open(modifyAppointment)">MODIFICAR TURNO</button>
+					<button class="btn btn-dark mx-3 mb-3 cursive-font" (click)="open(cancelAppointment)">CANCELAR TURNO</button>
+					<button class="btn btn-dark mx-3 mb-3 cursive-font">DESCARGAR COMPROBANTE</button>
+			</div>
+	</div>
 </div>
+<ng-template #modifyAppointment let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title cursive-font" id="modal-basic-title">MODIFICAR TURNO</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="modifyAppForm" (ngSubmit)="onSave">
+			<div class="mb-3">
+				<label for="dateOfBirth" class="common-font pb-1">Nueva Fecha</label>
+				<div class="input-group">
+					<input
+						class="form-control"
+						placeholder="yyyy-mm-dd"
+						name="dp"
+						type="datetime-local"
+						formControlName="date"
+					/>
+					
+				</div>
+			</div>
+		</form>
+                <small class="common-font">Una vez modificada la fecha, deberás aguardar la confirmación del turno por parte de la red.</small>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark common-font" (click)="onSave()">Modificar</button>
+	</div>
+</ng-template>
+
+<ng-template #cancelAppointment let-modal>
+	<div class="modal-header d-flex align-items-start justify-content-start">
+		<h4 class="modal-title cursive-font" id="modal-basic-title">CANCELAR TURNO</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<p>Por favor confirme la cancelacion del turno en el día 23/05/2023</p>
+	</div>
+	<div class="modal-footer d-flex align-items-start justify-content-start">
+		<button type="button" class="btn btn-outline-dark common-font" (click)="modal.close('Save click')">Confirmar</button>
+	</div>
+</ng-template>

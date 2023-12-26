@@ -2,6 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
 import { Appointment } from './entities/appointment.entity';
+import { ObjectId } from 'mongoose';
 
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -54,7 +55,7 @@ export class AppointmentsService {
     }
   }
 
-  async findAppointmentsById( userId: string ) {
+  async findAppointmentsByUserId( userId: string ) {
     // Find appointments filtering by user id 
    const appointments = await this.appointmentModel.find({ userId: userId }).exec()
    
@@ -64,5 +65,10 @@ export class AppointmentsService {
 
   async remove(id: string) {
     return this.appointmentModel.findOneAndDelete({ _id: id }).exec();
+  }
+  
+  async findByAppointmentId(id:string){
+  
+    return this.appointmentModel.findById({ _id: id }).exec();
   }
 }

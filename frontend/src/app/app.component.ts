@@ -21,14 +21,15 @@ export class AppComponent {
 
   public authStatusChangedEffect = effect(()=>{
     console.log(this.authService.authStatus())
+    
     switch( this.authService.authStatus()){
 
       case AuthStatus.authenticated:
         this.router.navigateByUrl('/dashboard');
         return;
-      case AuthStatus.notAuthenticated:
-        this.router.navigateByUrl('/auth/login');
-        return;
+      // case AuthStatus.notAuthenticated:
+      //   this.router.navigateByUrl('/auth/login');
+      //   return;
     }
 
   })

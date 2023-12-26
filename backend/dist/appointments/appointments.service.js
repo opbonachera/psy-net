@@ -50,12 +50,15 @@ let AppointmentsService = class AppointmentsService {
             throw new common_1.UnauthorizedException("Unexpected error");
         }
     }
-    async findAppointmentsById(userId) {
+    async findAppointmentsByUserId(userId) {
         const appointments = await this.appointmentModel.find({ userId: userId }).exec();
         return appointments;
     }
     async remove(id) {
         return this.appointmentModel.findOneAndDelete({ _id: id }).exec();
+    }
+    async findByAppointmentId(id) {
+        return this.appointmentModel.findById({ _id: id }).exec();
     }
 };
 exports.AppointmentsService = AppointmentsService;

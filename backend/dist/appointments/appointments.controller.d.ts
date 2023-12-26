@@ -41,4 +41,9 @@ export declare class AppointmentsController {
     listAppointmentsByUserID(req: Request): Promise<(import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
         _id: string;
     }>)[]>;
+    getAppointmentById(body: {
+        appId: string;
+    }): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
+        _id: string;
+    }>>;
 }

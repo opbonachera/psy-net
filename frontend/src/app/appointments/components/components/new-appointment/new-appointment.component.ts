@@ -1,5 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Appointment } from 'src/app/appointments/interfaces/appointment.interface';
+import { AppointmentService } from 'src/app/appointments/services/appointment.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 @Component({
   selector: 'new-appointment',
   templateUrl: './new-appointment.component.html',
@@ -8,7 +12,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class NewAppointmentComponent {
 
   private fb = inject(FormBuilder)
-
+  private appointmentService = inject(AppointmentService)
+  private router = inject(Router);
+  public show: boolean=false;
+  public toastContent:string = "";
+  
+  
   public appointmentForm: FormGroup = this.fb.group({
     date: ['', [Validators.required]],
     message: ['', [Validators.required]]
@@ -40,7 +49,22 @@ export class NewAppointmentComponent {
       this.appointmentForm.markAllAsTouched;
       return;
     }
-    console.log(this.appointmentForm.value)
+    const { message, date } = this.appointmentForm.value;
+
+    this.appointmentService.createAppointment<Appointment>( message, date, "pending" )
+    .subscribe({
+      next: (res)=>{
+        const { _id } = res;
+        this.show=true;
+        this.toastContent = "El turno fue solicitado."
+        this.router.navigate(['/dashboard/'], { queryParams: { id: _id }})
+      },
+      error: ()=>{
+        this.show=true;
+        this.toastContent = "Ocurrio un error inesperado. Intente nuevamente."
+      }
+    })
+
     this.appointmentForm.reset();
   }
 }

@@ -4,33 +4,21 @@ import { DashboardPage } from "./pages/dashboard-page/dashboard-page.component";
 import { AppointmentComponent } from "./components/appointment/appointment.component";
 import { AppointmentListComponent } from "../appointments/components/components/appointment-list/appointment-list.component";
 import { isAuthenticatedGuard } from "../auth/guards/is-authenticated.guard";
+import { MenuComponent } from "./components/menu/menu.component";
+import { NewAppointmentComponent } from "../appointments/components/components/new-appointment/new-appointment.component";
 
 const routes: Routes = [{
     path: '',
-    children:[
+    component: DashboardPage,
+    children: [
         {
-            path:'',
-            component: DashboardPage,
-            //pathMatch:'full',
-            // Implement route guard
-            children:[
-                {
-                    path: '',
-                    // canActivate: [isAuthenticatedGuard],
-                    component: AppointmentComponent
-                },
-                {
-                    path: 'appointment-id',
-                    // canActivate: [isAuthenticatedGuard],
-                    component: AppointmentComponent
-                },
-                {
-                    path:'list',
-                    // canActivate: [isAuthenticatedGuard],
-                    component:AppointmentListComponent
-                },
-            ]
+            path: 'new',
+            component: NewAppointmentComponent
         },
+        {
+            path: '**',
+            component: AppointmentComponent
+        }
     ]
 }]
 
