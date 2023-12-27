@@ -25,14 +25,17 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { AppointmentsService } from './appointments.service';
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
-import { UpdateAppointmentDto } from './dto/update-appointment.dto';
 export declare class AppointmentsController {
     private readonly appointmentsService;
     constructor(appointmentsService: AppointmentsService);
     createAppointment(createAppDto: CreateAppointmentDto, req: Request): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
         _id: string;
     }>>;
-    modifyAppointment(updAppointmentDto: UpdateAppointmentDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
+    modifyAppointment(body: {
+        appId: string;
+        status: string;
+        date: string;
+    }): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{
         _id: string;
     }>>;
     removeAppointment(req: Request): Promise<import("mongoose").Document<unknown, {}, import("./entities/appointment.entity").Appointment> & import("./entities/appointment.entity").Appointment & Required<{

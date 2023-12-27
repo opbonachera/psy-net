@@ -1,8 +1,7 @@
 import { Component, OnInit, resolveForwardRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppointmentService } from 'src/app/appointments/services/appointment.service';
-import { Appointment } from '../../interfaces/appointment.interface';
-
+import { Appointment } from 'src/app/appointments/interfaces/appointment.interface';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -23,6 +22,5 @@ export class MenuComponent implements OnInit {
       error:  (err)=> console.log(err)
     })
 
-    console.log(this.appointments.length)
   }
 }

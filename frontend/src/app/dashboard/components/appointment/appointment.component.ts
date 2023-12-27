@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { AppointmentService } from 'src/app/appointments/services/appointment.service';
-
+import { Appointment } from 'src/app/appointments/interfaces/appointment.interface';
 @Component({
   selector: 'app-appointment',
   templateUrl: './appointment.component.html',
@@ -13,16 +13,17 @@ export class AppointmentComponent implements OnInit{
   constructor(
     private activatedRoute: ActivatedRoute,
     private appointmentService: AppointmentService
-  ){
-   
-  }
+  ){}
+
+  public appointment: Appointment;
 
   //GET APPOINTMENT FOR QUERY PARAMS
     ngOnInit() {
-      this.activatedRoute.params
+      this.activatedRoute.queryParams
       .pipe(
         switchMap(({ id })=>this.appointmentService.getAppointmentById(id))
-      ).subscribe(res=>console.log)
+      )
+      .subscribe(appointment=> this.appointment = appointment)
     }
   
 }

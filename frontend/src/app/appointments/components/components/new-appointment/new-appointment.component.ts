@@ -51,7 +51,7 @@ export class NewAppointmentComponent {
     }
     const { message, date } = this.appointmentForm.value;
 
-    this.appointmentService.createAppointment<Appointment>( message, date, "pending" )
+    this.appointmentService.createAppointment( message, date, "pending" )
     .subscribe({
       next: (res)=>{
         const { _id } = res;

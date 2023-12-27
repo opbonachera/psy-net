@@ -37,15 +37,12 @@ export class AppointmentsService {
     }
   }
 
-  async update( updateAppointmentDto: UpdateAppointmentDto ){
-    const { date, state, message } = updateAppointmentDto;
-
+  async update( id:string, status:string, date:string  ){
+    console.log(id,status,date);
+    
     try{
-      
-      const updatedApp = this.appointmentModel.findOneAndUpdate({ 'date':date, },
-                                                                { 'message': message,
-                                                                  'state': state });
 
+      const updatedApp = this.appointmentModel.findOneAndUpdate({ _id:id }, { 'date' : date, 'state': status }, { new: true }).exec();
       if(!updatedApp) throw new UnauthorizedException("Appointment does not exist");
 
       return updatedApp;
@@ -53,6 +50,8 @@ export class AppointmentsService {
     }catch(err){
       throw new UnauthorizedException("Unexpected error");
     }
+
+    
   }
 
   async findAppointmentsByUserId( userId: string ) {

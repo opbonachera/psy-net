@@ -16,7 +16,6 @@ exports.AppointmentsController = void 0;
 const common_1 = require("@nestjs/common");
 const appointments_service_1 = require("./appointments.service");
 const create_appointment_dto_1 = require("./dto/create-appointment.dto");
-const update_appointment_dto_1 = require("./dto/update-appointment.dto");
 const auth_guard_1 = require("../shared/guards/auth.guard");
 const common_2 = require("@nestjs/common");
 let AppointmentsController = class AppointmentsController {
@@ -27,8 +26,9 @@ let AppointmentsController = class AppointmentsController {
         const id = req['user']._id.toString();
         return this.appointmentsService.create(createAppDto, id);
     }
-    modifyAppointment(updAppointmentDto) {
-        return this.appointmentsService.update(updAppointmentDto);
+    modifyAppointment(body) {
+        const { appId, date, status } = body;
+        return this.appointmentsService.update(appId, status, date);
     }
     removeAppointment(req) {
         const id = req['user']._id.toString();
@@ -39,8 +39,13 @@ let AppointmentsController = class AppointmentsController {
         return this.appointmentsService.findAppointmentsByUserId(userId);
     }
     getAppointmentById(body) {
-        const { appId } = body;
-        return this.appointmentsService.findByAppointmentId(appId);
+        try {
+            const { appId } = body;
+            return this.appointmentsService.findByAppointmentId(appId);
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
 };
 exports.AppointmentsController = AppointmentsController;
@@ -58,7 +63,7 @@ __decorate([
     (0, common_1.Patch)('/update'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [update_appointment_dto_1.UpdateAppointmentDto]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], AppointmentsController.prototype, "modifyAppointment", null);
 __decorate([

@@ -14,7 +14,7 @@
         <div class="card d-flex align-items-center justify-content-center p-5">
             <p class="cursive-font fs-3 mx-4 mt-4">TURNO ACTIVO</p>
             <small class="mx-4 common-font">Tenes un turno el dia {{ earliestAppointment.date }} | MODALIDAD: Virtual </small>
-            <button class="btn btn-dark cursive-font w-25 m-4" routerLink="/dashboard/">DETALLES</button>
+            <button class="btn btn-dark cursive-font w-25 m-4" [routerLink]= "['/dashboard/']" [queryParams]="{id:earliestAppointment._id}" >DETALLES</button>
             
         </div>
     </div>
@@ -24,7 +24,7 @@
 <ng-template #noApp>
     <div class="mt-5">
         <div class="card d-flex align-items-center justify-content-center p-5">
-            <p>No tenes ningun turno activo. <a [routerLink]="['/dashboard/appointments/new']">Obtener turno</a></p>
+            <p>No tenes ningun turno activo. <a [routerLink]="['/dashboard/new']">Obtener turno</a></p>
         </div>
     </div>
 </ng-template>

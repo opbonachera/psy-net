@@ -18,8 +18,9 @@ export class AppointmentsController {
 
   @UseGuards( AuthGuard )
   @Patch('/update')
-  modifyAppointment( @Body() updAppointmentDto: UpdateAppointmentDto){
-    return this.appointmentsService.update(updAppointmentDto)
+  modifyAppointment( @Body() body: { appId: string, status:string, date:string } ){
+    const { appId, date, status } = body;
+    return this.appointmentsService.update(appId,status,date);
   }
 
   @UseGuards( AuthGuard )
@@ -38,8 +39,11 @@ export class AppointmentsController {
 
   @UseGuards( AuthGuard )
   @Post('/get-by-id')
-  getAppointmentById( @Body() body: { appId: string}  ){
-  const { appId } = body;
-  return this.appointmentsService.findByAppointmentId(appId)
-  }
+  getAppointmentById( @Body() body: { appId: string }  ){
+  try{
+      const { appId } = body;     
+      return this.appointmentsService.findByAppointmentId(appId);    
+  }catch(err){
+    console.log(err)
+  }}
 }

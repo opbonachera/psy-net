@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Appointment } from 'src/app/appointments/interfaces/appointment.interface';
 
 @Component({
   selector: 'app-appointment-list',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./appointment-list.component.css']
 })
 export class AppointmentListComponent {
-
+  @Input()
+  public appointment: Appointment;
 }

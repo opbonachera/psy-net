@@ -56,14 +56,17 @@ export class LoginComponent implements OnInit{
 
     this.authService.login(username, password)
     .subscribe({
-        next: () => this.router.navigateByUrl('/dashboard'),
+        next: () => this.router.navigateByUrl('/dashboard/menu'),
         error: (err:any)=> {
-          this.show=true;
-          this.toastContent='Ocurrió un error inesperado. Intente nuevamente.'
-          console.log(err)
+          this.showToast("Ocurrió un error inesperado. Intente nuevamente.")
         }
     })
     
     this.loginForm.reset();
+  }
+
+  private showToast(message:string){
+    this.show=true;
+    this.toastContent=message;
   }
 }

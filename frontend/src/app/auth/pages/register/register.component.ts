@@ -19,9 +19,9 @@ export class RegisterComponent{
   public usernames:any;
 
   public registerForm: FormGroup = this.fb.group({
-    fullName: ['', [Validators.required]],
+    fullName: ['Ornella Bonachera', [Validators.required]],
     username: ['opaula', [Validators.required], [new UsernameValidator() ]],
-    email:    ['oopaula@gmail.com', [Validators.required, Validators.email]],
+    email:    ['opaula@gmail.com', [Validators.required, Validators.email]],
     password: ['aaaaa', [Validators.required]],
     repeatPassword: ['aaaaa', [Validators.required]],
   })
@@ -44,7 +44,7 @@ export class RegisterComponent{
     for(const key of Object.keys(errors)){
       switch(key){
         case 'required':
-          return 'Rellene el campo'
+          return 'Complete el campo'
         case 'usernameTaken':
           return 'Ese nombre de usuario ya existe'
         default:
@@ -67,9 +67,7 @@ export class RegisterComponent{
     this.authService.register(username, fullName, email, password, true)
     .subscribe({
       next: ()=>{
-        this.show=true;
-        this.toastContent='Cuenta creada correctamente.'
-
+        this.showToast("Cuenta creada correctamente.")
         setTimeout(() => {
           this.router.navigateByUrl('/auth/login')
         }, 3500);
@@ -77,14 +75,17 @@ export class RegisterComponent{
       },
       
       error: (err)=>{
-        this.show = true;
-        this.toastContent = 'Ocurrió un error inesperado. Intente nuevamente.'
-        console.log(err)
+        this.showToast("Ocurrió un error inesperado. Intente nuevamente.")
       }
     }
     )
     
     this.registerForm.reset();
+  }
+
+  private showToast(message:string){
+    this.show=true;
+    this.toastContent=message;
   }
 
 }

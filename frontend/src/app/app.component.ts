@@ -25,11 +25,11 @@ export class AppComponent {
     switch( this.authService.authStatus()){
 
       case AuthStatus.authenticated:
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/dashboard/menu');
         return;
-      // case AuthStatus.notAuthenticated:
-      //   this.router.navigateByUrl('/auth/login');
-      //   return;
+      case AuthStatus.notAuthenticated:
+        this.router.navigateByUrl('/auth/login');
+        return;
     }
 
   })

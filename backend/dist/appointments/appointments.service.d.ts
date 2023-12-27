@@ -25,14 +25,13 @@
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
 import { Appointment } from './entities/appointment.entity';
 import { Model } from 'mongoose';
-import { UpdateAppointmentDto } from './dto/update-appointment.dto';
 export declare class AppointmentsService {
     private appointmentModel;
     constructor(appointmentModel: Model<Appointment>);
     create(createAppointmentDto: CreateAppointmentDto, id: string): Promise<import("mongoose").Document<unknown, {}, Appointment> & Appointment & Required<{
         _id: string;
     }>>;
-    update(updateAppointmentDto: UpdateAppointmentDto): Promise<import("mongoose").Document<unknown, {}, Appointment> & Appointment & Required<{
+    update(id: string, status: string, date: string): Promise<import("mongoose").Document<unknown, {}, Appointment> & Appointment & Required<{
         _id: string;
     }>>;
     findAppointmentsByUserId(userId: string): Promise<(import("mongoose").Document<unknown, {}, Appointment> & Appointment & Required<{

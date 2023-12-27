@@ -12,6 +12,10 @@ const routes: Routes = [{
     component: DashboardPage,
     children: [
         {
+            path: 'menu',
+            component: MenuComponent
+        },
+        {
             path: 'new',
             component: NewAppointmentComponent
         },
