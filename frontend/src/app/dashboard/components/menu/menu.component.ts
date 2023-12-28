@@ -16,8 +16,8 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.appointmentService.getAppointmentList().subscribe({
       next:   (res)=> { 
-        this.appointments = res 
-        this.earliestAppointment = res[0]
+        this.appointments = res.filter((a)=>a.state!=='cancelled');
+        console.log(this.appointments)
       },
       error:  (err)=> console.log(err)
     })

@@ -3,7 +3,7 @@
 		<div class="card-body text-dark p-5">
 		<h5 class="card-title cursive-font fs-4">TENES UN TURNO AGENDADO</h5>
 		<hr>
-		<p class="card-text">FECHA:  {{ this.appointment.date }}| ESTADO: {{ appointment.state }}</p>
+		<p class="card-text">FECHA:  {{ this.appointment.date | date }} | ESTADO: {{ appointment.state | state }}</p>
 		<p>Modalidad virtual. Se te enviará un correo con el enlace de acceso a la videollamada.</p>
 		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, quibusdam commodi excepturi quaerat nam autem officia non et quisquam vel maxime, sunt mollitia amet, corrupti facere culpa praesentium quidem pariatur!</p>
 		</div>
@@ -47,7 +47,7 @@
 		<button *ngIf="appointment.status!='cancelled'" type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-		<p>Por favor confirme la cancelacion del turno en el día {{ appointment.date }}</p>
+		<p>Por favor confirme la cancelacion del turno en el día {{ appointment.date | date }}</p>
 	</div>
 	<div class="modal-footer d-flex align-items-start justify-content-start">
 		<button type="button" class="btn btn-outline-dark common-font" (click)="onCancel()">Confirmar</button>

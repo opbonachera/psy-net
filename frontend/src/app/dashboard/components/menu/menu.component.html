@@ -10,11 +10,11 @@
         <p class="common-font text-center">Desde este portal podes administrar turnos con los especialistas que integran nuestra red.</p>
     </div>
 
-    <div class="mt-5" *ngIf="appointments.length > 1; else noApp">
+    <div class="mt-5" *ngIf="appointments[0]; else noApp">
         <div class="card d-flex align-items-center justify-content-center p-5">
             <p class="cursive-font fs-3 mx-4 mt-4">TURNO ACTIVO</p>
-            <small class="mx-4 common-font">Tenes un turno el dia {{ earliestAppointment.date }} | MODALIDAD: Virtual </small>
-            <button class="btn btn-dark cursive-font w-25 m-4" [routerLink]= "['/dashboard/']" [queryParams]="{id:earliestAppointment._id}" >DETALLES</button>
+            <small class="mx-4 common-font">Tenes un turno el dia {{ appointments[0].date | date }} | MODALIDAD: Virtual </small>
+            <button class="btn btn-dark cursive-font w-25 m-4" [routerLink]= "['/dashboard/']" [queryParams]="{id:appointments[0]._id}" >DETALLES</button>
             
         </div>
     </div>

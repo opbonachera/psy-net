@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 
+import { isAuthenticatedGuard } from './auth/guards/is-authenticated.guard';
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -19,6 +20,7 @@ const routes: Routes = [
     },
     {
       path:'auth',
+      canActivate: [isAuthenticatedGuard],
       loadChildren: ()=>import('./auth/auth.module').then(m=>m.AuthModule)
     },
     

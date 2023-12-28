@@ -10,18 +10,22 @@ import { NewAppointmentComponent } from "../appointments/components/components/n
 const routes: Routes = [{
     path: '',
     component: DashboardPage,
+    canActivate: [isAuthenticatedGuard],
     children: [
         {
             path: 'menu',
-            component: MenuComponent
+            component: MenuComponent,
+            canActivate: [isAuthenticatedGuard]
         },
         {
             path: 'new',
-            component: NewAppointmentComponent
+            component: NewAppointmentComponent,
+            canActivate: [isAuthenticatedGuard],
         },
         {
             path: '**',
-            component: AppointmentComponent
+            component: AppointmentComponent,
+            canActivate: [isAuthenticatedGuard],
         }
     ]
 }]

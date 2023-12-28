@@ -7,6 +7,7 @@ import { NgbDatepickerDayView } from '@ng-bootstrap/ng-bootstrap/datepicker/date
 import { NgbDatepickerModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StatePipe } from './pipes/state.pipe';
 
 
 
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppointmentListComponent,
     NewAppointmentComponent,
-    AppointmentCardComponent
+    AppointmentCardComponent,
+    StatePipe
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports:[
     AppointmentListComponent,
     NewAppointmentComponent, 
-    AppointmentCardComponent
+    AppointmentCardComponent,
+    StatePipe
   ]
 })
 export class AppointmentsModule { }
