@@ -49,8 +49,7 @@ export class AppointmentService{
         
     }
 
-    public modifyAppointment<Appointment>(id:string, state:string, date?:string):Observable<Appointment>{
-        console.log(id, state, date)
+    public modifyAppointment(id:string, state:string, date?:string):Observable<Appointment>{
         const url = `${ environment.baseUrl }appointments/update`;
         const body = { appId: id, date: date, status: state };
         const headers = this.getHeadersAndSetAuthorization();

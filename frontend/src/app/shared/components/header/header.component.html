@@ -1,29 +1,33 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary cursive-font shadow-sm">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#" [routerLink]="['/home']">PSICOWEB</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <div class="container">  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-       
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" [routerLink]="['/home']" fragment="foundation">Fundación</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" [routerLink]="['/home']" fragment="services">Servicios</a>
-      </li>
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" [routerLink]="['/home']" fragment="appointment">Obtener Turno</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" [routerLink]="['/home']" fragment="contact">Contacto</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/auth/login']">Ingresar</a>
-        </li>
-      </ul>
+      <div class="d-flex align-items-center justify-content-between w-100">
+        <div>  
+          <a class="navbar-brand" href="#" [routerLink]="['/home']">PSICOWEB</a>
+        </div>
+        <div>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" [routerLink]="['/home']" fragment="services">Servicios</a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" [routerLink]="['/home']" fragment="appointment">Obtener Turno</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" [routerLink]="['/home']" fragment="contact">Contacto</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/auth/login']">Ingresar</a>
+            </li>
+          </ul>
+        </div>
 
+      </div>
     </div>
   </div>
 </nav>

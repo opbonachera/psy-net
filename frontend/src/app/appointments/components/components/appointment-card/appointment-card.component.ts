@@ -4,15 +4,16 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Appointment } from 'src/app/appointments/interfaces/appointment.interface';
 import { AppointmentService } from 'src/app/appointments/services/appointment.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-appointment-card',
   templateUrl: './appointment-card.component.html',
   styleUrls: ['./appointment-card.component.css']
 })
-export class AppointmentCardComponent implements OnInit{
+export class AppointmentCardComponent{
 	@Input()
-	public appointment: Appointment | undefined | any;
+	public appointment: Appointment;
 	
 	public toastContent:string;
 	public show:boolean;
@@ -20,7 +21,8 @@ export class AppointmentCardComponent implements OnInit{
 	private modalService = inject(NgbModal);
 	private fb: FormBuilder = inject(FormBuilder);
 	private appointmentService = inject(AppointmentService);
-	
+	private router = inject(Router);
+
 	public modifyAppForm: FormGroup = this.fb.group({
 		date:['', [ Validators.required ]]
 	})
@@ -29,16 +31,12 @@ export class AppointmentCardComponent implements OnInit{
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
 	}
 
-	ngOnInit(): void {
-		
-	}
-
 	onSave(){
 		const { date } = this.modifyAppForm.value;
 		const {  _id } = this.appointment;
 
 		this.appointmentService.modifyAppointment(_id, "pending", date).subscribe({
-			next:(res:any)=>{
+			next:(res:Appointment)=>{
 				this.appointment = res;
 				this.showToast("El turno fue modificado correctamente. Aguarde la confirmación.") },
 			error:(err)=>{
@@ -56,11 +54,13 @@ export class AppointmentCardComponent implements OnInit{
 
 	public onCancel(){
 		this.appointmentService.cancelAppointment(this.appointment._id).subscribe({
-			next:(res: any)=>{ 
+			next:(res: Appointment)=>{ 
+				console.log(res)
 				this.showToast("El turno fue cancelado correctamente.");
+				this.appointment = res;
 				setTimeout(() => {
-					this.appointment = res;
-				}, 3000);
+					this.router.navigateByUrl('/dashboard/menu')
+				}, 2500);
 			},
 			error:(err)=>{
 				this.showToast("Ocurrió un error. Intente nuevamente.")

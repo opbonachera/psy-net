@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppointmentListComponent } from './components/components/appointment-list/appointment-list.component';
 import { NewAppointmentComponent } from './components/components/new-appointment/new-appointment.component';
 import { AppointmentCardComponent } from './components/components/appointment-card/appointment-card.component';
 import { NgbDatepickerDayView } from '@ng-bootstrap/ng-bootstrap/datepicker/datepicker-day-view';
@@ -13,7 +12,6 @@ import { StatePipe } from './pipes/state.pipe';
 
 @NgModule({
   declarations: [
-    AppointmentListComponent,
     NewAppointmentComponent,
     AppointmentCardComponent,
     StatePipe
@@ -25,7 +23,6 @@ import { StatePipe } from './pipes/state.pipe';
     NgbToastModule
   ],
   exports:[
-    AppointmentListComponent,
     NewAppointmentComponent, 
     AppointmentCardComponent,
     StatePipe

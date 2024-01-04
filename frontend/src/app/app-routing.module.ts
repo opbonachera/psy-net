@@ -20,14 +20,12 @@ const routes: Routes = [
     },
     {
       path:'auth',
-      canActivate: [isAuthenticatedGuard],
       loadChildren: ()=>import('./auth/auth.module').then(m=>m.AuthModule)
     },
-    
-    // {
-    //   path:'appointments',
-    //   loadChildren: ()=>import('./appointments/appointments.module').then(m=>m.AppointmentsModule)
-    // }
+    {
+      path:'appointments',
+      loadChildren: ()=>import('./appointments/appointments.module').then(m=>m.AppointmentsModule)
+    }
 ];
 
 @NgModule({

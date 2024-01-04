@@ -17,7 +17,6 @@ export class AppointmentComponent implements OnInit{
 
   public appointment: Appointment;
 
-  //GET APPOINTMENT FOR QUERY PARAMS
     ngOnInit() {
       this.activatedRoute.queryParams
       .pipe(
