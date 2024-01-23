@@ -1,1 +1,18 @@
-Hello READ ME!
+# Psychology Net Application
+
+## Description
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+
+## Development server
+
+1.1. Clone the git repository.
+1.2. Open terminal and run npm innstall. 
+
+## Frontend
+2.1. Open terminal and change directory to frontend.
+2.2. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+#Backend
+3.1. Open terminal and change directory to backend.
+3.2. Run command `npm run start:dev`
